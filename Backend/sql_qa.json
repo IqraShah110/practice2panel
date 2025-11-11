@@ -1,0 +1,82 @@
+[
+    {
+        "question": "Explain the difference between INNER JOIN, LEFT JOIN, and RIGHT JOIN.",
+        "answer": "INNER JOIN returns rows only when there is a match in both tables. LEFT JOIN returns all rows from the left table, even if there's no match in the right table; it uses NULLs for non-matching values. RIGHT JOIN is the mirror image of LEFT JOIN, returning all rows from the right table.\n\nUnderstanding these joins is crucial for data retrieval.  Choosing the correct join type directly impacts the results and efficiency of your queries.  Incorrect join usage can lead to inaccurate analyses or missing data, impacting business decisions based on those analyses."
+    },
+    {
+        "question": "What are indexes in SQL, and why are they important?",
+        "answer": "Indexes are special lookup tables that the database search engine can use to speed up data retrieval.  Simply put, an index in SQL is a pointer to data in a table. \n\nIndexes significantly improve query performance, especially on large datasets. Without indexes, the database has to perform a full table scan, which is slow.  Indexes are essential for maintaining application responsiveness and scaling databases efficiently."
+    },
+    {
+        "question": "Describe the difference between WHERE and HAVING clauses.",
+        "answer": "The WHERE clause filters rows *before* grouping, while the HAVING clause filters rows *after* grouping.  WHERE filters individual rows based on conditions, and HAVING filters groups based on aggregate function results. \n\nThis distinction is crucial for performing aggregate queries correctly.  Misusing WHERE and HAVING can lead to incorrect results when working with aggregate functions like SUM, AVG, COUNT, etc.  Understanding the difference ensures accurate data aggregation."
+    },
+    {
+        "question": "Explain the use of GROUP BY and aggregate functions.",
+        "answer": "GROUP BY groups rows with the same values in specified columns into summary rows, like calculating the sum of sales per region. Aggregate functions (SUM, AVG, COUNT, MIN, MAX) operate on these grouped rows. \n\nThis is fundamental to data summarization and reporting.  Business intelligence heavily relies on grouping and aggregation to present meaningful insights from raw data, enabling data-driven decision-making."
+    },
+    {
+        "question": "What are subqueries, and how are they used?",
+        "answer": "Subqueries are queries nested inside other queries. They're used to obtain data that's then used in the outer query's WHERE or FROM clause.  They allow you to perform complex filtering and data selection. \n\nSubqueries enable complex data manipulation and filtering not easily achievable with simple queries.  They are vital for tasks like finding correlated data or data based on conditional aggregations."
+    },
+    {
+        "question": "Explain the concept of normalization in database design.",
+        "answer": "Normalization is the process of organizing data to reduce redundancy and improve data integrity.  It involves dividing larger tables into smaller tables and defining relationships between them.  \n\nProper normalization is essential for efficient database design.  It prevents data anomalies, saves storage space, and makes the database easier to maintain and update, reducing the risk of data inconsistencies."
+    },
+    {
+        "question": "What are transactions in SQL, and why are they important?",
+        "answer": "Transactions are a sequence of database operations treated as a single unit of work.  They either all complete successfully (commit) or none of them do (rollback), ensuring data consistency. \n\nTransactions guarantee atomicity, consistency, isolation, and durability (ACID properties) – crucial for managing data integrity, especially in multi-user or concurrent environments.  They prevent partial updates and data corruption."
+    },
+    {
+        "question": "What are stored procedures, and what are their benefits?",
+        "answer": "Stored procedures are pre-compiled SQL code that can be stored and reused. They encapsulate multiple SQL statements, allowing for modularity and reusability. \n\nStored procedures improve performance, security, and maintainability. They reduce network traffic, enhance data integrity by enforcing business rules, and simplify complex database operations."
+    },
+    {
+        "question": "Explain the difference between CHAR and VARCHAR data types.",
+        "answer": "CHAR stores fixed-length strings, padding with spaces if necessary, while VARCHAR stores variable-length strings, storing only the actual characters. \n\nChoosing the appropriate data type depends on the data. CHAR is efficient for storing data of fixed length, while VARCHAR saves space for variable-length strings.  Improper choice can lead to wasted storage or performance issues."
+    },
+    {
+        "question": "How do you handle NULL values in SQL?",
+        "answer": "NULL represents the absence of a value, not zero or an empty string.  Use IS NULL and IS NOT NULL to check for NULLs, and COALESCE or NVL to provide default values. \n\nProper NULL handling is critical for accurate data analysis.  Ignoring NULLs or treating them as zeros can lead to incorrect calculations and interpretations, misrepresenting the data."
+    },
+    {
+        "question": "Explain the concept of views in SQL.",
+        "answer": "Views are virtual tables based on the result-set of an SQL statement. They don't store data themselves but provide a customized perspective of the underlying tables. \n\nViews simplify complex queries, provide data security by restricting access to specific columns or rows, and improve data maintainability by providing an abstract layer over the underlying tables."
+    },
+    {
+        "question": "What are triggers in SQL, and how are they used?",
+        "answer": "Triggers are procedural code automatically executed in response to certain events on a particular table or view (like INSERT, UPDATE, or DELETE).  \n\nTriggers are essential for enforcing data integrity rules, auditing changes, and implementing complex business logic within the database itself, reducing application complexity."
+    },
+    {
+        "question": "Explain different types of SQL constraints.",
+        "answer": "Constraints are rules enforced on columns or tables to ensure data integrity. Common types include NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, CHECK. \n\nConstraints prevent invalid data from entering the database, ensuring consistency and accuracy.  They are fundamental to building robust and reliable database applications."
+    },
+    {
+        "question": "How do you use UNION and UNION ALL in SQL?",
+        "answer": "UNION combines the result sets of two or more SELECT statements into a single result set, eliminating duplicate rows. UNION ALL does the same but includes duplicates. \n\nBoth are useful for combining data from multiple tables or queries.  Choosing between UNION and UNION ALL depends on whether you need to remove duplicates or preserve them."
+    },
+    {
+        "question": "What is a self-join, and when would you use it?",
+        "answer": "A self-join joins a table to itself, treating it as two separate tables. It's used to compare rows within the same table. \n\nSelf-joins are useful for identifying hierarchical relationships or comparing data points within the same dataset, such as finding employees who report to each other."
+    },
+    {
+        "question": "Explain the importance of database transactions in maintaining data integrity.",
+        "answer": "Database transactions ensure atomicity, consistency, isolation, and durability (ACID properties).  They treat a series of operations as a single unit, either all succeeding or none. \n\nThis is crucial for reliable database operations, especially in concurrent or multi-user environments where data integrity could be compromised without transactions, ensuring consistent and accurate results."
+    },
+    {
+        "question": "Describe the concept of database normalization and its benefits.",
+        "answer": "Database normalization is a systematic approach to organizing data to reduce redundancy and improve data integrity.  It involves splitting databases into two or more tables and defining relationships. \n\nNormalization avoids data anomalies (insertion, update, and deletion anomalies) and makes data management easier, improving efficiency and data reliability."
+    },
+    {
+        "question": "What are the different types of database relationships?",
+        "answer": "Common types include one-to-one, one-to-many, and many-to-many. These define how data in different tables are related. One-to-one means one record in table A relates to one record in table B, etc. \n\nUnderstanding database relationships is fundamental to designing relational databases. Choosing the correct type of relationship is essential for the integrity and efficiency of the database."
+    },
+    {
+        "question": "Explain how to optimize SQL queries for performance.",
+        "answer": "Techniques include adding indexes, using appropriate join types, avoiding SELECT *, optimizing WHERE clauses, and using stored procedures.  Analyze query execution plans to identify bottlenecks. \n\nQuery optimization is crucial for building efficient applications.  Slow queries negatively impact user experience, resource utilization, and overall system performance."
+    },
+    {
+        "question": "How do you handle errors in SQL queries?",
+        "answer": "Use TRY...CATCH blocks (or equivalent) to handle potential errors gracefully.  Implement appropriate error logging mechanisms.  Careful data validation is crucial to prevent errors.  \n\nRobust error handling ensures application reliability and prevents unexpected crashes or data corruption. It allows for recovery and prevents critical issues in production systems."
+    }
+]

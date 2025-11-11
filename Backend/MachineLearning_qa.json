@@ -1,0 +1,42 @@
+[
+    {
+        "question": "How would you handle missing values in a dataset. What are the advantages and disadvantages of different approaches?",
+        "answer": "When dealing with missing values, I consider several approaches based on the data context and missing pattern:  Deletion: Remove rows with missing values. Simple but loses information Best for large datasets with few missing value  Imputation: Replace missing values. Mean/Median: Preserves size but distorts distribution Predictive: More accurate but computationally expensive  K-Nearest Neighbors: Fill based on similar instances. Effective but sensitive to outliers and distance metrics. "
+    },
+    {
+        "question": "Explain the difference between bagging and boosting algorithms. When would you use one over the other?",
+        "answer": "Bagging and boosting are ensemble methods with different approaches:  Bagging (Random Fores:  Trains models independently on random subsets  Reduces variance without increasing bias  Best for noisy data, high-variance models  Boosting (XGBoost, AdaBoos:  Builds models sequentially, correcting errors  Reduces bias without increasing variance  Best when accuracy is critical, training time available"
+    },
+    {
+        "question": "What is feature scaling, and why is it important. Describe different methods of feature scaling?",
+        "answer": "Feature scaling transforms features to similar range, preventing larger magnitude features from dominating. This is crucial for distance-based algorithms and gradient descent optimization.  Standardization (Z-scor: Mean=0, std=1 Preserves distribution, handles outliers  Min-Max scaling: Rescales to [0,1] range Sensitive to outliers, preserves zero values  Robust scaling: Uses median and IQR Resistant to outliers  Normalization (Unit vecto: Scales to unit length Useful for text classification"
+    },
+    {
+        "question": "How do you decide between using a parametric versus a non-parametric model for a given problem?",
+        "answer": "The choice depends on data characteristics and problem requirements:  Parametric models (Linear Regressio: Assume specific functional form Advantages: Faster, less data needed, interpretable Disadvantages: May underfit if assumption wrong  Non-parametric models (Decision Tree: Make fewer assumptions about distribution Advantages: Flexible, handles complex relationships Disadvantages: Slower, requires more data, risk of overfitting"
+    },
+    {
+        "question": "What is the curse of dimensionality, and how does it affect machine learning models. What techniques can mitigate this issue?",
+        "answer": "Curse of dimensionality refers to problems that arise when working with high- dimensional data: Data becomes sparse, patterns harder to detect Distance metrics become less meaningful Computational complexity increases exponentially Models require exponentially more data Mitigation techniques: Dimensionality reduction (PCA, t-SNFeature selection Regularization (L1/LassDomain knowledge application"
+    },
+    {
+        "question": "How would you evaluate a machine learning model when the dataset is highly imbalanced?",
+        "answer": "When evaluating models on imbalanced datasets, accuracy alone is misleading. I would use several approaches: Beyond accuracy: Precision, recall, Fscore ROC-AUC curve PR curve (better for imbalancTechniques: Stratified cross-validation Cost-sensitive learning Ensemble methods I’d also consider business context: cost of false positives vs. false negatives, and whether to optimize for sensitivity or specificity."
+    },
+    {
+        "question": "Explain the trade-offs between bias and variance. How would you diagnose and address underfitting and overfitting?",
+        "answer": "The bias-variance tradeoff is fundamental in machine learning: Bias (Underfittin: Model too simple, misses patterns Poor performance on train/test Solutions: More complexity, features Variance (Overfittin: Model too complex, learns noise Great train, poor test performance Solutions: Regularization, more data To diagnose, I’d examine learning curves and performance gaps between training and validation sets. The goal is finding the sweet spot where both bias and variance are minimized."
+    },
+    {
+        "question": "What strategies would you use to process and analyze terabytes of data that cannot fit into memory?",
+        "answer": "For processing terabytes of data beyond memory limits, I’d implement several strategies: Distributed computing: Spark, Hadoop, Dask Horizontal scaling Storage: Columnar formats (ParqueCompression techniques Data processing: Chunking/batching Out-of-core algorithms Analysis: Data sampling Dimensionality reduction The choice depends on specific requirements, infrastructure, and whether we need to process all data or can work with aggregated results."
+    },
+    {
+        "question": "How would you select the most appropriate machine learning algorithm for a given problem?",
+        "answer": "Selecting the right algorithm involves multiple considerations: Considerations: Problem type (classification/regressioData characteristics Performance requirements Practical approach: Start with simple baselines Try multiple algorithms Compare relevant metrics I’d start with simple models (linear models, decision treeand then try more complex ones if needed. I’d use cross-validation to compare performance and factor in deployment constraints and maintenance requirements."
+    },
+    {
+        "question": "Explain the difference between batch processing and stream processing. When would you use each approach?",
+        "answer": "Batch and stream processing are fundamentally different approaches to handling data: Batch processing: Large data chunks at once Higher latency (minutes–hourBest for: Historical analysis, complex transformations Stream processing: Continuous data processing Low latency (milliseconds–secondBest for: Real-time monitoring, alerts I’d choose batch processing for historical analysis, complex transformations, and when latency isn’t critical. I’d use stream processing for real-time monitoring, alerts, and when immediate action is required based on incoming data."
+    }
+]
