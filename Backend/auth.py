@@ -942,6 +942,7 @@ def google_callback():
                         session['user_id'] = user_id
                         session['email'] = user_data[0]
                         session['full_name'] = user_data[1]
+                        session.permanent = True  # Make session persistent
                         
                         return jsonify({
                             'success': True,
@@ -970,6 +971,7 @@ def google_callback():
                         session['user_id'] = user_id
                         session['email'] = email
                         session['full_name'] = full_name
+                        session.permanent = True  # Make session persistent
                         
                         return jsonify({
                             'success': True,
