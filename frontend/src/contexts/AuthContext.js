@@ -28,15 +28,6 @@ export const AuthProvider = ({ children }) => {
         credentials: 'include', // Include cookies for session
       });
 
-      // Handle network errors
-      if (!response.ok && response.status !== 401) {
-        console.error('Auth check failed:', response.status, response.statusText);
-        setUser(null);
-        setAuthenticated(false);
-        setLoading(false);
-        return;
-      }
-
       const data = await response.json();
       
       if (data.success && data.authenticated) {
@@ -48,12 +39,8 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error('Auth check failed:', error);
-      // Don't fail completely on network errors - might be backend sleeping
-      // Only clear auth if it's a real error, not just connection timeout
-      if (error.message && !error.message.includes('Failed to fetch')) {
-        setUser(null);
-        setAuthenticated(false);
-      }
+      setUser(null);
+      setAuthenticated(false);
     } finally {
       setLoading(false);
     }
@@ -73,10 +60,8 @@ export const AuthProvider = ({ children }) => {
       const data = await response.json();
 
       if (data.success) {
-        // Wait a moment for session cookie to be set
-        await new Promise(resolve => setTimeout(resolve, 300));
-        // Verify session is set by calling checkAuth
-        await checkAuth();
+        setUser(data.user);
+        setAuthenticated(true);
         return { success: true, message: data.message };
       } else {
         return { success: false, message: data.message };
@@ -115,14 +100,6 @@ export const AuthProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      
-      if (data.success) {
-        // After signup, user needs to verify email, so don't set authenticated yet
-        // But verify session is working
-        await new Promise(resolve => setTimeout(resolve, 300));
-        await checkAuth();
-      }
-      
       return { success: data.success, message: data.message, user_id: data.user_id };
     } catch (error) {
       console.error('Signup error:', error);

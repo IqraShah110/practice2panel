@@ -13,7 +13,7 @@ load_dotenv()
 # Email configuration from environment variables
 SMTP_SERVER = os.getenv('SMTP_SERVER', 'smtp.gmail.com')
 SMTP_PORT = int(os.getenv('SMTP_PORT', '587'))
-EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')
+EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS', 'solangimuqadas.20@gmail.com')
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')  # App password
 
 def send_email(to_email, subject, body_html, body_text=None):
@@ -29,8 +29,8 @@ def send_email(to_email, subject, body_html, body_text=None):
     Returns:
         tuple: (success: bool, error_message: str or None)
     """
-    if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
-        return False, "Email configuration missing. Please set EMAIL_ADDRESS and EMAIL_PASSWORD in .env file."
+    if not EMAIL_PASSWORD:
+        return False, "Email configuration missing. Please set EMAIL_PASSWORD in your .env file. EMAIL_ADDRESS defaults to solangimuqadas.20@gmail.com if not specified."
     
     try:
         # Create message

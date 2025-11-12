@@ -396,6 +396,10 @@
   .auth-header h1 {
     font-size: 1.875rem;
   }
+
+  .auth-header p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -409,6 +413,10 @@
 
   .auth-header h1 {
     font-size: 1.75rem;
+  }
+
+  .auth-header p {
+    font-size: 0.95rem;
   }
 
   .code-input {
@@ -430,6 +438,12 @@
     width: 100%;
     justify-content: flex-start;
   }
+
+  .auth-button,
+  .google-button {
+    width: 100%;
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -439,19 +453,10 @@
 
   .auth-card {
     padding: 1.25rem;
-    border-radius: 10px;
-  }
-
-  .auth-header {
-    margin-bottom: 1.5rem;
   }
 
   .auth-header h1 {
     font-size: 1.5rem;
-  }
-
-  .auth-header p {
-    font-size: 1rem;
   }
 
   .form-group input {
@@ -461,14 +466,8 @@
 
   .auth-button,
   .google-button {
-    padding: 0.875rem 1.25rem;
+    padding: 0.875rem;
     font-size: 1rem;
-  }
-
-  .code-input {
-    font-size: 1.125rem;
-    letter-spacing: 0.2rem;
-    padding: 0.75rem;
   }
 }
 

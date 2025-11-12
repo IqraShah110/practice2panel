@@ -528,34 +528,8 @@
 }
 
 @media (max-width: 480px) {
-  .dashboard {
-    padding: 0.75rem 0;
-  }
-
-  .dashboard-header {
-    gap: 1rem;
-  }
-
-  .header-content h1 {
-    font-size: 1.75rem;
-  }
-
   .stat-card {
     padding: 1rem;
-    gap: 1rem;
-  }
-
-  .stat-icon {
-    width: 56px;
-    height: 56px;
-  }
-
-  .stat-value {
-    font-size: 1.75rem;
-  }
-
-  .stat-label {
-    font-size: 0.95rem;
   }
 
   .content-section,
@@ -564,39 +538,20 @@
     padding: 1rem;
   }
 
-  .section-header h2 {
-    font-size: 1.25rem;
-  }
-
   .activity-item {
     flex-direction: column;
     text-align: center;
     gap: 0.75rem;
-    padding: 0.875rem;
   }
 
   .activity-meta {
     flex-direction: column;
     gap: 0.25rem;
-    font-size: 0.9rem;
   }
 
   .achievement-card {
     flex-direction: column;
     text-align: center;
     gap: 0.75rem;
-    padding: 1rem;
-  }
-
-  .chart-container {
-    padding: 1.5rem 1rem;
-  }
-
-  .chart-placeholder h3 {
-    font-size: 1.25rem;
-  }
-
-  .chart-metrics {
-    gap: 1rem;
   }
 }

@@ -688,9 +688,7 @@ def google_authorize():
         allowed_frontend_origins = {
             FRONTEND_URL.rstrip('/'),
             'http://localhost:3000',
-            'http://127.0.0.1:3000',
-            'https://practice2panel-frontend-8ptb.onrender.com',  # Production frontend URL
-            'https://practice2panel-frontend.onrender.com'  # Fallback
+            'http://127.0.0.1:3000'
         }
 
         request_origin = request.headers.get('Origin')
@@ -787,9 +785,7 @@ def google_callback():
         allowed_frontend_origins = {
             FRONTEND_URL.rstrip('/'),
             'http://localhost:3000',
-            'http://127.0.0.1:3000',
-            'https://practice2panel-frontend-8ptb.onrender.com',  # Production frontend URL
-            'https://practice2panel-frontend.onrender.com'  # Fallback
+            'http://127.0.0.1:3000'
         }
 
         stored_redirect_uri = session.get('oauth_redirect_uri')
@@ -910,7 +906,6 @@ def google_callback():
                     session['user_id'] = user_id
                     session['email'] = db_email
                     session['full_name'] = db_full_name
-                    session.permanent = True  # Make session persistent
                     
                     return jsonify({
                         'success': True,
@@ -942,7 +937,6 @@ def google_callback():
                         session['user_id'] = user_id
                         session['email'] = user_data[0]
                         session['full_name'] = user_data[1]
-                        session.permanent = True  # Make session persistent
                         
                         return jsonify({
                             'success': True,
@@ -971,7 +965,6 @@ def google_callback():
                         session['user_id'] = user_id
                         session['email'] = email
                         session['full_name'] = full_name
-                        session.permanent = True  # Make session persistent
                         
                         return jsonify({
                             'success': True,

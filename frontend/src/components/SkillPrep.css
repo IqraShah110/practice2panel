@@ -8,21 +8,6 @@
   text-align: center;
   margin-bottom: 4rem;
   position: relative;
-  padding: 0 1rem;
-}
-
-@media (max-width: 768px) {
-  .skill-prep-header {
-    margin-bottom: 2.5rem;
-    padding: 0 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .skill-prep-header {
-    margin-bottom: 2rem;
-    padding: 0 1rem;
-  }
 }
 
 .skill-prep-header::after {
@@ -49,18 +34,6 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 2rem;
-  }
-}
-
 .section-subtitle {
   font-size: 1.25rem;
   color: var(--text-secondary);
@@ -71,21 +44,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  padding: 0 1rem;
-}
-
-@media (max-width: 768px) {
-  .section-subtitle {
-    font-size: 1.125rem;
-    padding: 0 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-subtitle {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
 }
 
 /* Setup Container */
@@ -96,18 +54,6 @@
 
 .setup-card {
   padding: 3rem;
-}
-
-@media (max-width: 768px) {
-  .setup-card {
-    padding: 2rem 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .setup-card {
-    padding: 1.5rem 1rem;
-  }
 }
 
 .setup-section {
@@ -772,6 +718,48 @@
 }
 
 @media (max-width: 768px) {
+  .skill-prep {
+    padding: 0.5rem 0;
+  }
+
+  .skill-prep-header {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .setup-container {
+    padding: 0 1rem;
+  }
+
+  .setup-card {
+    padding: 1.5rem;
+  }
+
+  .setup-section {
+    margin-bottom: 2rem;
+  }
+
+  .setup-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .interview-type-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .practice-questions-container,
   .chatbot-sidebar {
     padding: 1.25rem;
@@ -786,47 +774,32 @@
   .chatbot-sidebar .chatbot-container {
     width: 100%;
   }
-
-  .skill-prep {
-    padding: 0.5rem 0;
-  }
-
-  .setup-container {
-    padding: 0 1rem;
-  }
-
-  .setup-section {
-    margin-bottom: 2rem;
-  }
-
-  .setup-section h3 {
-    font-size: 1.25rem;
-  }
-
-  .interview-type-options {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .practice-questions-container,
-  .chatbot-sidebar {
-    padding: 1rem;
-    border-radius: 0.75rem;
+  .skill-prep-header {
+    margin-bottom: 1.5rem;
   }
 
-  .skill-prep {
-    padding: 0.25rem 0;
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .setup-card {
+    padding: 1rem;
+    border-radius: 1rem;
   }
 
   .setup-section h3 {
     font-size: 1.125rem;
-    flex-wrap: wrap;
   }
 
-  .interview-type-options {
-    gap: 0.75rem;
+  .practice-questions-container {
+    padding: 1rem;
   }
 }
 

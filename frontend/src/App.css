@@ -9,9 +9,21 @@ main {
   padding-top: 80px;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   main {
     padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: 60px;
+  }
+  
+  .loading-container {
+    min-height: 300px;
+    padding: 2rem 1rem;
   }
 }
 

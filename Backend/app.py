@@ -42,68 +42,28 @@ app = Flask(__name__)
 load_dotenv()
 
 # Configure Flask session
-secret_key = os.getenv('SECRET_KEY', 'your-secret-key-change-this-in-production')
-# Warn if using default secret key (security risk in production)
-if secret_key == 'your-secret-key-change-this-in-production':
-    import warnings
-    warnings.warn(
-        "SECRET_KEY is not set! Using default value. This is insecure for production. "
-        "Please set SECRET_KEY environment variable. "
-        "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\"",
-        UserWarning
-    )
-app.config['SECRET_KEY'] = secret_key
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-change-this-in-production')
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_KEY_PREFIX'] = 'practice2panel:'
 app.config['PERMANENT_SESSION_LIFETIME'] = 2592000  # 30 days in seconds
 
-# Configure session cookies for cross-origin requests
-app.config['SESSION_COOKIE_SECURE'] = True  # Only send over HTTPS
-app.config['SESSION_COOKIE_HTTPONLY'] = True  # Prevent JavaScript access
-app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Allow cross-site requests
-app.config['SESSION_COOKIE_DOMAIN'] = None  # Let browser set domain automatically
-
 # Initialize Flask-Session
 Session(app)
 
 # Enable CORS for frontend communication with credentials support
-# Get frontend URL from environment variable
-FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:3000')
-allowed_origins = [
-    FRONTEND_URL.rstrip('/'),
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'https://practice2panel-frontend-8ptb.onrender.com',  # Production frontend URL
-   
-]
-
+# Allow all origins in development for easier testing
 CORS(app, 
      supports_credentials=True, 
      resources={r"/api/*": {
-         "origins": allowed_origins,
+         "origins": "*",
          "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-         "allow_headers": ["Content-Type", "Authorization", "Accept"],
-         "expose_headers": ["Content-Type"]
+         "allow_headers": ["Content-Type", "Authorization", "Accept"]
      }})
 
 # Register auth blueprint
 app.register_blueprint(auth_bp)
-
-# Root route - also used for health checks
-@app.route('/', methods=['GET', 'HEAD'])
-def root():
-    return jsonify({
-        'message': 'Practice2Panel API is running',
-        'status': 'active',
-        'endpoints': {
-            'health': '/api/health',
-            'questions': '/api/questions/<interview_type>/<skill>',
-            'chatbot': '/api/chatbot',
-            'auth': '/api/auth/*'
-        }
-    }), 200
 
 # Initialize users table on startup
 try:
@@ -293,23 +253,14 @@ def process_voice():
             'message': f'Server error during voice processing: {str(e)}'
         }), 500
 
-@app.route('/api/health', methods=['GET', 'HEAD'])
+@app.route('/api/health', methods=['GET'])
 def health_check():
-    """Health check endpoint - responds quickly for Render health checks"""
-    try:
-        # Quick database connection test (with timeout)
-        conn = get_pg_connection()
-        conn.close()
-        db_status = 'connected'
-    except:
-        db_status = 'disconnected'
-    
+    """Health check endpoint"""
     return jsonify({
         'success': True,
         'message': 'API is running',
-        'status': 'healthy',
-        'database': db_status
-    }), 200
+        'status': 'healthy'
+    })
 
 def build_context_info(context):
     """Build context information string from context dict."""

@@ -27,9 +27,8 @@ def get_whisper_model():
             # Lazy import so backend can start without whisper installed
             import whisper  # type: ignore
         except ImportError as e:
-            logger.warning("Whisper is not installed. Voice transcription will use OpenAI API fallback.")
-            logger.warning("To enable local Whisper, install 'openai-whisper' (requires 700+ MB download).")
-            raise ImportError("Whisper not available - using OpenAI API fallback")
+            logger.error("Whisper is not installed. Install 'openai-whisper' to enable voice features.")
+            raise
         logger.info("Loading Whisper model...")
         whisper_model = whisper.load_model("base")
     return whisper_model
@@ -43,17 +42,13 @@ def get_openai_client() -> OpenAI:
 
 def transcribe_audio(audio_file_path):
     """Transcribe audio using local Whisper; on failure, fall back to OpenAI API if available."""
-    # First: try local whisper (if available)
+    # First: local whisper
     try:
         model = get_whisper_model()
         result = model.transcribe(audio_file_path)
         return result["text"]
-    except ImportError:
-        # Whisper not installed - skip to OpenAI API fallback
-        logger.info("Local Whisper not available, using OpenAI API for transcription")
-        pass
     except Exception as e:
-        logger.warning(f"Local Whisper transcription error: {e}, falling back to OpenAI API")
+        logger.error(f"Local Whisper transcription error: {e}")
 
     # Fallback: OpenAI Whisper API
     try:

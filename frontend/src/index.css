@@ -93,18 +93,6 @@ code {
   padding: 0 1rem;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
-  }
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -375,6 +363,20 @@ code {
   background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
 }
 
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .section-title {
     font-size: 2rem;
@@ -391,5 +393,26 @@ code {
   .btn {
     padding: var(--spacing-sm) var(--spacing-lg);
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 100%;
   }
 }

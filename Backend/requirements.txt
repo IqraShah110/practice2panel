@@ -6,16 +6,15 @@ flask==2.3.3
 flask-cors==4.0.0
 flask-session>=0.5.0
 werkzeug>=2.3.0
-gunicorn>=21.2.0
 
 # Environment & Configuration
-python-dotenv>=1.1.1
+python-dotenv==1.0.0
 
 # AI & Machine Learning
 openai>=1.0.0
-# openai-whisper==20231117  # Removed: Too large for Render (700+ MB). Using OpenAI API fallback instead.
-# sentence-transformers>=5.1.1  # Removed: Not used in codebase, pulls in PyTorch
-# huggingface_hub>=0.35.1  # Removed: Only needed for sentence-transformers
+openai-whisper==20231117
+sentence-transformers>=5.1.1
+huggingface_hub>=0.35.1
 scikit-learn>=1.4.0
 numpy>=1.26.0
 
@@ -29,8 +28,9 @@ pyttsx3==2.90
 pydub==0.25.1
 
 # Document Processing
-python-docx>=1.1.1
+python-docx>=1.0.0
 PyPDF2>=3.0.0
+
 # Google OAuth
 google-auth>=2.23.0
 google-auth-oauthlib>=1.1.0
