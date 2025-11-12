@@ -53,13 +53,22 @@ app.config['PERMANENT_SESSION_LIFETIME'] = 2592000  # 30 days in seconds
 Session(app)
 
 # Enable CORS for frontend communication with credentials support
-# Allow all origins in development for easier testing
+# Get frontend URL from environment variable
+FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:3000')
+allowed_origins = [
+    FRONTEND_URL.rstrip('/'),
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://practice2panel-frontend.onrender.com'  # Production frontend URL
+]
+
 CORS(app, 
      supports_credentials=True, 
      resources={r"/api/*": {
-         "origins": "*",
+         "origins": allowed_origins,
          "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-         "allow_headers": ["Content-Type", "Authorization", "Accept"]
+         "allow_headers": ["Content-Type", "Authorization", "Accept"],
+         "expose_headers": ["Content-Type"]
      }})
 
 # Register auth blueprint
