@@ -7,6 +7,9 @@ flask-cors==4.0.0
 flask-session>=0.5.0
 werkzeug>=2.3.0
 
+# Production WSGI Server (Required for Render/Heroku)
+gunicorn>=21.2.0
+
 # Environment & Configuration
 python-dotenv==1.0.0
 
