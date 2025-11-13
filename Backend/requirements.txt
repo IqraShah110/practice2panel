@@ -11,7 +11,7 @@ werkzeug>=2.3.0
 gunicorn>=21.2.0
 
 # Environment & Configuration
-python-dotenv==1.0.0
+python-dotenv>=1.0.0
 
 # AI & Machine Learning
 openai>=1.0.0
@@ -24,7 +24,8 @@ numpy>=1.26.0
 # LangChain & CrewAI
 langchain>=0.3.0
 langchain-openai>=0.2.0
-crewai>=0.203.0
+# Note: crewai version constraint relaxed to allow pip to resolve compatible version
+crewai
 
 # Voice Processing
 pyttsx3==2.90
